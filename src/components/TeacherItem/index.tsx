@@ -1,6 +1,7 @@
 import React from 'react';
 
 import api from '../../services/api';
+import formatValue from '../../utils/formatValue';
 import whatsappIcon from '../../assets/images/icons/whatsapp.svg';
 
 import './styles.css';
@@ -41,7 +42,7 @@ const TeacherItem: React.FC<TeacherItemProps> = ({ teacher }) => {
           <footer>
             <p>
               Preço/hora
-              <strong>{teacher.cost}</strong>
+              <strong>{formatValue(teacher.cost)}</strong>
             </p>
             <a 
               onClick={createNewConnection} 

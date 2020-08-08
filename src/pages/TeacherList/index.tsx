@@ -15,13 +15,14 @@ const TeacherList: React.FC = () => {
   const [week_day, setWeekDay] = useState('');
   const [time, setTime] = useState('');
 
-  useEffect(() => {
-    async function loadTeachers(): Promise<void> {
-      api.get('classes').then(response => {
-        setTeachers(response.data);
-      });
-    }
+  const [clearFilters, setClearFilters] = useState(false);
 
+  async function loadTeachers(): Promise<void> {
+    api.get('classes').then(response => {
+      setTeachers(response.data);
+    });
+  }
+  useEffect(() => {
     loadTeachers();
   }, []);
 
@@ -36,7 +37,15 @@ const TeacherList: React.FC = () => {
       },
     });
 
+    setClearFilters(true);
+
     setTeachers(response.data);
+  }
+
+  function handleClearFilters() {
+    setClearFilters(false);
+
+    loadTeachers();
   }
 
   return (
@@ -88,6 +97,11 @@ const TeacherList: React.FC = () => {
 
           <button type="submit">Buscar</button>
         </form>
+
+        { clearFilters && (
+        <button id="clear-filters" onClick={handleClearFilters} type="button">
+          Limpar filtros
+        </button>)}
       </PageHeader>
 
       <main>

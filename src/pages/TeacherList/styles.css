@@ -32,6 +32,18 @@
   background-color: var(--color-secundary-dark);
 }
 
+#clear-filters {
+  background: transparent;
+  border: none;
+  margin-top: 0.8rem;
+  color: var(--color-text-in-primary);
+  cursor: pointer;
+}
+
+#clear-filters:hover {
+  opacity: 0.8;
+}
+
 #page-teacher-list main {
   margin: 3.2rem auto;
   width: 90%;
@@ -52,6 +64,13 @@
 
   #search-teachers .select-block + .select-block {
     margin-top: 0;
+  }
+
+  #clear-filters {
+    position: absolute;
+    bottom: -50px;
+    color: var(--color-primary);
+    margin-left: 1.6rem;
   }
 
   #page-teacher-list main {
